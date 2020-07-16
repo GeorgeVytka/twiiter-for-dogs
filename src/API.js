@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/woof';
+const API_URL = 'http://localhost:3000/woofs';
 
 export async function createTwitterEntry(entry){
 
@@ -9,5 +9,10 @@ export async function createTwitterEntry(entry){
             
           },
           body: JSON.stringify(entry),
-    });
+    })
+}
+
+export async function ListTwitter(){
+    const respone = await fetch(`${API_URL}`);
+    return respone.json();
 }
