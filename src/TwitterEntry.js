@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { createTwitterEntry } from './API';
 
@@ -7,7 +7,7 @@ import './App.css';
 function TwitterEntry() {
 
   const { register, handleSubmit, watch, errors } = useForm();
-  
+  const [count, setCount] = useState(0);
   
   const onSubmit = async (data) => {
       await createTwitterEntry(data);
@@ -27,7 +27,7 @@ function TwitterEntry() {
       {/* errors will return when field validation fails  */}
       {errors.exampleRequired && <span>This field is required</span>}
       
-      <input type="submit" />
+      <input type="submit" onClick={() => setCount(count + 1)}/>
     </form>
 
     </div>
